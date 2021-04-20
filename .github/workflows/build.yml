@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  "*/5 * * * *"
 
 jobs:
   build:
@@ -36,3 +36,12 @@ jobs:
     - name: Fetch citations and create badges
       run: |
         python Citation_Parser.py
+        
+        - name: Commit and push if needed
+      run: |-
+        git diff
+        git config --global user.email "readme-bot@example.com"
+        git config --global user.name "README-bot"
+        git add -A
+        git commit -m "Updated README.md automatically" || exit 0
+        git push

@@ -7,7 +7,7 @@ import pandas as pd
 gs_profile_link = 'https://scholar.google.com/citations?user=ub2WBpoAAAAJ'
 
 page = requests.get(gs_profile_link).text
-soup = BeautifulSoup(page)
+soup = BeautifulSoup(page,"lxml")
 
 total_cite = int(soup.findAll('td',{'class':'gsc_rsb_std'})[0].text)
 
@@ -36,7 +36,7 @@ gs_pymk_cite = int(gs_profile_papers[gs_profile_papers.Name == 'pyMannKendall: a
 rg_profile_link = 'https://www.researchgate.net/publication/334688255_pyMannKendall_a_python_package_for_non_parametric_Mann_Kendall_family_of_trend_tests/citations'
 
 page = requests.get(rg_profile_link).text
-soup = BeautifulSoup(page)
+soup = BeautifulSoup(page,"lxml")
 
 rg_pymk_cite = soup.findAll('div',{'class':'nova-e-text nova-e-text--size-m nova-e-text--family-sans-serif nova-e-text--spacing-none nova-e-text--color-inherit nova-c-nav__item-label'})[0].text
 rg_pymk_cite = int(rg_pymk_cite.replace('Citations (','').replace(')',''))
@@ -44,8 +44,8 @@ rg_pymk_cite = int(rg_pymk_cite.replace('Citations (','').replace(')',''))
 
 # Badge create via shields.io
 badge_link = {
-    'gs_pymk_cite' : "https://img.shields.io/badge/Citations-{cite}-_.svg?logo=google-scholar&labelColor=f0f0f0&color=4499ff".format(cite = gs_pymk_cite),
-    'rg_pymk_cite' : "https://img.shields.io/badge/Citations-{cite}-_.svg?logo=researchgate&labelColor=4f4f4f&color=00ddaa".format(cite = rg_pymk_cite),
+    'gs_pymk_cite' : "https://img.shields.io/badge/Citations-{cite}-_.svg?logo=google-scholar&labelColor=4f4f4f&color=3388ee".format(cite = gs_pymk_cite),
+    'rg_pymk_cite' : "https://img.shields.io/badge/Citations-{cite}-_.svg?logo=researchgate&labelColor=4f4f4f&color=00bb88".format(cite = rg_pymk_cite),
 }
 
 for itm in badge_link.items():

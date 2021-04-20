@@ -7,7 +7,7 @@ import pandas as pd
 gs_profile_link = 'https://scholar.google.com/citations?user=ub2WBpoAAAAJ'
 
 page = requests.get(gs_profile_link).text
-soup = BeautifulSoup(page,"lxml")
+soup = BeautifulSoup(page,"html.parser")
 
 total_cite = int(soup.findAll('td',{'class':'gsc_rsb_std'})[0].text)
 
@@ -36,7 +36,7 @@ gs_pymk_cite = int(gs_profile_papers[gs_profile_papers.Name == 'pyMannKendall: a
 rg_profile_link = 'https://www.researchgate.net/publication/334688255_pyMannKendall_a_python_package_for_non_parametric_Mann_Kendall_family_of_trend_tests/citations'
 
 page = requests.get(rg_profile_link).text
-soup = BeautifulSoup(page,"lxml")
+soup = BeautifulSoup(page,"html.parser")
 
 rg_pymk_cite = soup.findAll('div',{'class':'nova-e-text nova-e-text--size-m nova-e-text--family-sans-serif nova-e-text--spacing-none nova-e-text--color-inherit nova-c-nav__item-label'})[0].text
 rg_pymk_cite = int(rg_pymk_cite.replace('Citations (','').replace(')',''))

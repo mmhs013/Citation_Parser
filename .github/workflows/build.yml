@@ -37,7 +37,7 @@ jobs:
       run: |
         python Citation_Parser.py
         
-        - name: Commit and push if needed
+    - name: Commit and push if needed
       run: |-
         git diff
         git config --global user.email "readme-bot@example.com"

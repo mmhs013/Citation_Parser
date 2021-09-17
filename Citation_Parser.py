@@ -38,7 +38,7 @@ rg_profile_link = 'https://www.researchgate.net/publication/334688255_pyMannKend
 page = requests.get(rg_profile_link).text
 soup = BeautifulSoup(page,"html.parser")
 
-rg_pymk_cite = soup.findAll('div',{'class':'nova-e-text nova-e-text--size-m nova-e-text--family-sans-serif nova-e-text--spacing-none nova-e-text--color-inherit nova-c-nav__item-label'})[0].text
+rg_pymk_cite = soup.findAll('div',{'class':'nova-legacy-e-text nova-legacy-e-text--size-m nova-legacy-e-text--family-sans-serif nova-legacy-e-text--spacing-none nova-legacy-e-text--color-inherit nova-legacy-c-nav__item-label'})[0].text
 rg_pymk_cite = int(rg_pymk_cite.replace('Citations (','').replace(')',''))
 
 

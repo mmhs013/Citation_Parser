@@ -31,21 +31,21 @@ for i in range(len(div)):
 gs_pymk_cite = int(gs_profile_papers[gs_profile_papers.Name == 'pyMannKendall: a python package for non parametric Mann Kendall family of trend tests.'].Citation.iloc[0])
 
 
+# Currently Researchgate parsing is not working due to Cloudflar Protection
+# # Researchgate pyMannKendall paper citetion parsing
+# rg_profile_link = 'https://www.researchgate.net/publication/334688255_pyMannKendall_a_python_package_for_non_parametric_Mann_Kendall_family_of_trend_tests/citations'
 
-# Researchgate pyMannKendall paper citetion parsing
-rg_profile_link = 'https://www.researchgate.net/publication/334688255_pyMannKendall_a_python_package_for_non_parametric_Mann_Kendall_family_of_trend_tests/citations'
+# page = requests.get(rg_profile_link).text
+# soup = BeautifulSoup(page,"html.parser")
 
-page = requests.get(rg_profile_link).text
-soup = BeautifulSoup(page,"html.parser")
-
-rg_pymk_cite = soup.findAll('div',{'class':'nova-legacy-e-text nova-legacy-e-text--size-m nova-legacy-e-text--family-sans-serif nova-legacy-e-text--spacing-none nova-legacy-e-text--color-inherit nova-legacy-c-nav__item-label'})[0].text
-rg_pymk_cite = int(rg_pymk_cite.replace('Citations (','').replace(')',''))
+# rg_pymk_cite = soup.findAll('div',{'class':'nova-legacy-e-text nova-legacy-e-text--size-m nova-legacy-e-text--family-sans-serif nova-legacy-e-text--spacing-none nova-legacy-e-text--color-inherit nova-legacy-c-nav__item-label'})[0].text
+# rg_pymk_cite = int(rg_pymk_cite.replace('Citations (','').replace(')',''))
 
 
 # Badge create via shields.io
 badge_link = {
     'gs_pymk_cite' : "https://img.shields.io/badge/Citations-{cite}-_.svg?logo=google-scholar&labelColor=4f4f4f&color=3388ee".format(cite = gs_pymk_cite),
-    'rg_pymk_cite' : "https://img.shields.io/badge/Citations-{cite}-_.svg?logo=researchgate&labelColor=4f4f4f&color=00bb88".format(cite = rg_pymk_cite),
+    # 'rg_pymk_cite' : "https://img.shields.io/badge/Citations-{cite}-_.svg?logo=researchgate&labelColor=4f4f4f&color=00bb88".format(cite = rg_pymk_cite),
 }
 
 for itm in badge_link.items():
